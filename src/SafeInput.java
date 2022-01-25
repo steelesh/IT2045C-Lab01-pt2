@@ -54,14 +54,13 @@ public class SafeInput {
         boolean done;
         String title = "";
         do{
-            System.out.print( prompt + " [ Mr. | Mrs. | Ms. | Jr. | Sr. | Dr. | Prof. | Esq. ]: ");
+            System.out.print( prompt + " [ Mr. | Mrs. | Ms. | Dr. | Prof. | Esq. | Hon. ]: ");
             title = pipe.nextLine();
             if(title.equalsIgnoreCase("Mr") || title.equalsIgnoreCase("Mr.") || title.equalsIgnoreCase("Mrs") ||
             title.equalsIgnoreCase("Mrs.") || title.equalsIgnoreCase("Ms") || title.equalsIgnoreCase("Ms.") ||
-            title.equalsIgnoreCase("Jr") || title.equalsIgnoreCase("Jr.") || title.equalsIgnoreCase("Sr") ||
-            title.equalsIgnoreCase("Sr.") || title.equalsIgnoreCase("Dr") || title.equalsIgnoreCase("Dr.") ||
+            title.equalsIgnoreCase("Dr") || title.equalsIgnoreCase("Dr.") ||
             title.equalsIgnoreCase("Prof") || title.equalsIgnoreCase("Prof.") || title.equalsIgnoreCase("Esq") ||
-            title.equalsIgnoreCase("Esq.")){
+            title.equalsIgnoreCase("Esq.") || title.equalsIgnoreCase("Hon") || title.equalsIgnoreCase("Hon.")){
                 done = true;
             }
             else{

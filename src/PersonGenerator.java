@@ -14,17 +14,18 @@ import static java.nio.file.StandardOpenOption.*;
 public class PersonGenerator {
 
     public static void main(String[] args) {
+
         Scanner in = new Scanner(System.in);
         String fileName = "";
         boolean another = false;
-        ArrayList<String> personsRecord = new ArrayList<>();
+        ArrayList<Person> personsRecord = new ArrayList<Person>();
         do {
             String ID = SafeInput.getRegExString(in, "Enter ID #", "\\d{6}");
             String firstName = SafeInput.getNonZeroLenString(in, "Enter your first name");
             String lastName = SafeInput.getNonZeroLenString(in, "Enter your last name");
             String title = SafeInput.titleValidator(in, "Enter your title");
-            int yob = SafeInput.getRangedInt(in, "Enter year of birth ", 1000, 2022);
-            personsRecord.add(ID + ", " + firstName + ", " + lastName + ", " + title + ", " + yob);
+            int yob = SafeInput.getRangedInt(in, "Enter year of birth ", 1940, 2000);
+            personsRecord.add(new Person(ID, firstName, lastName, title, yob));
             System.out.println();
             another = SafeInput.getYNConfirm(in, "Submit another person?");
             System.out.println();
@@ -37,8 +38,8 @@ public class PersonGenerator {
                     new BufferedOutputStream(Files.newOutputStream(file, CREATE));
             BufferedWriter writer =
                     new BufferedWriter(new OutputStreamWriter(out));
-            for(String rec : personsRecord){
-                writer.write(rec, 0, rec.length());
+            for(Person person : personsRecord){
+                writer.write(person.toCSV());
                 writer.newLine();
             }
             writer.close();
